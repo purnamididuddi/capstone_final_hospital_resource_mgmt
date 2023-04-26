@@ -21,7 +21,7 @@ The goal is to help hospital management to predict the length-of-stay of a patie
 |<span style='background:yellow'> Model 1 | Logistic Regr | Initial logistic regr model | --- | 38.91/38.85/38.65 | 38.65 |
 |<span style='background:yellow'> Model 2 | Logistic Regr with OneHot on all categ | Consolidated onehot encoding | 130 | 38.97/38.89/38.87 | 38.87 |
 |<span style='background:yellow'> Model 3 | GridSearch Logistic Regr hyper params | {'lgr__C': 0.18957356524063793, 'lgr__max_iter... | 130 | 40.13/40.14/40.13 | 40.13 |
-|<span style='background:yellow'> Model 4 | GridSearch kNN hyper params | {'knn__n_neighbors': 50} | 130 | 41.89/39.04/39.24 | 39.24 |
+|<span style='background:yellow'> Model 4 | GridSearch kNN hyper params |{'knn__n_neighbors': 85} | 130 | 40.83/39.21/39.25 | 39.25|
 |<span style='background:yellow'> Model 5 | Decision Tree 1 | Moderate depth of 10 | 130 | 42.14/41.22/41.22 | 41.22 |
 |<span style='background:yellow'> Model 6 | Decision Tree 2 | Deeper tree (max-depth=100) | 130 | 99.96/30.07/30.04 | 30.04 |
 |<span style='background:yellow'> Model 7 | Gridsearch on Decision tree | {'dt__max_depth': 10, 'dt__min_impurity_decrea... | 130 | 39.58/40.04/39.98 | 39.98 |
@@ -29,6 +29,14 @@ The goal is to help hospital management to predict the length-of-stay of a patie
 |<span style='background:yellow'> Model 9 | Adaboost to compensate for high bias | {'boost__n_estimators': 25} | 30 | 36.96/37.32/37.38 | 37.38 |
 |<span style='background:yellow'> Model 10 | Gradientboost to compensate for high bias | {'gboost__n_estimators': 200} | 30 | 41.58/41.3/41.19 | 41.19 |
 |<span style='background:yellow'> Model 11 | RandomForests with deep trees to compensate for high variance | {'n_estimators': 50  'max_depth': 100} | 30 | 99.81/33.98/33.79 | 33.79 |
+
+    
+### Recommendation:
+Model 5 and Model 10 in the above table, have the highest predictive capability of all the models. 
+
+
+If I were to recommend using a model, I would recommend Model 10, because of the fact that it is an ensemble technique and a better diverse model compared to a single decision tree.
+
 
 ### Summary of the findings:
 #### From the Data Understanding stage:
@@ -45,7 +53,7 @@ The goal is to help hospital management to predict the length-of-stay of a patie
      b. Of these Stays, the patients with Bed_grades 3 and 4 are more than Bed_grades 1 and 2
      c. Of these Stays, most patients are from Gynaecology Department. This is not new information as the total patients admitted are in that department anyway
     
-### Evaluation of the Models and Conclusion:
+#### Summary of the Models and Conclusion:
 I have built several models, as shown in the table above, in the goal of improving the prediction performance while keeping the model complexity in check. Overall, the models have performed much better in comparison with someone doing random guessing of predicting the Stay of a patient. However, most models had tough time raising the prediction accuracy beyond 45%.
 
 This is a challenging dataset: There are 11 classes in the target variable. In general with datasets like this, the odds of predicting the correct class slims down in comparison with datasets with fewer classes in the target variable. Also, the distribution of classes in target variable is very uneven.
